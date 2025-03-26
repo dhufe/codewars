@@ -3,21 +3,24 @@
 
 void to_camel_case(const char *text, char *camel) {
 
-    while( *text != '\0') {
-      if ( *text == '-' || *text == '_') {
+  while (*text != '\0') {
+    if (*text == '-' || *text == '_') {
 
+      text++;
+
+      if (*text >= 97 && *text <= 122) {
+        *camel = *text - 32;
         text++;
-
-        if ( *text >= 97 && *text <= 122 ) {
-          *camel = *text - 32;
-          text++; camel++;
-        }
-
-      } else {
-        *camel = *text;
-        text++; camel++;
+        camel++;
       }
-    }
 
-    *camel = '\0';
+    } else {
+      *camel = *text;
+      text++;
+      camel++;
+    }
+  }
+
+  *camel = '\0';
 }
+
